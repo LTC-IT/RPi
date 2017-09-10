@@ -53,5 +53,4 @@ pip3 install gspread
 echo "Setting Wifi power management to off"
 iwconfig wlan0 power off
 echo "All done. Thank you"
-read -n 1 -s -p "Press any key to reboot..."
-shutdown -r now
+echo "Reboot now"
