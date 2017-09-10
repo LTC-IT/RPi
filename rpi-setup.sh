@@ -10,8 +10,8 @@ fi
 # ------------------
 # UPDATE THESE VARIABLES AS REQUIRED
 # List of packages for all architectures (including Raspbian for x86)
-PACKAGES= "pi-greeter sense-hat raspberrypi-ui-mods raspberrypi-artwork raspberrypi-bootloader pix-icons pix-plym-splash rpd-wallpaper rpi-chromium-mods python-sense-emu python3-sense-emu python-sense-emu-doc python-picamera python3-pip"
-PACKAGES2 = "graphicsmagick fritzing gnome-screenshot mu mono-complete dia-gnome qt4-dev-tools qtcreator python3-pyqt4 qt4-designer vlc python3-pip leafpad lxterminal"
+PACKAGES= "pi-greeter sense-hat raspberrypi-ui-mods raspberrypi-artwork raspberrypi-bootloader pix-icons pix-plym-splash rpd-wallpaper rpi-chromium-mods python-sense-emu python3-sense-emu python-sense-emu-doc python3-pip"
+PACKAGES2 = "graphicsmagick fritzing gnome-screenshot mu mono-complete dia-gnome qt4-dev-tools qtcreator python3-pyqt4 qt4-designer vlc python3-pip leafpad lxterminal python-picamera"
 SCRIPTVERSION="1.5"
 SCHOOL=LTC
 # ------------------
