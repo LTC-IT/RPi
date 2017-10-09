@@ -52,5 +52,8 @@ pip3 install gspread
 # Configuration
 echo "Setting Wifi power management to off"
 iwconfig wlan0 power off
+
+setxkbmap us
+
 echo "All done. Thank you"
 echo "Reboot now"
