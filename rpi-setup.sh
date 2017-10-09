@@ -11,7 +11,7 @@ fi
 # UPDATE THESE VARIABLES AS REQUIRED
 # List of packages for all architectures (including Raspbian for x86)
 PACKAGES="pi-greeter sense-hat raspberrypi-ui-mods raspberrypi-artwork raspberrypi-bootloader pix-icons pix-plym-splash rpd-wallpaper rpi-chromium-mods python-sense-emu python3-sense-emu python-sense-emu-doc python3-pip"
-PACKAGES2="lxterminal graphicsmagick fritzing gnome-screenshot mu mono-complete dia-gnome qt4-dev-tools qtcreator python3-pyqt4 qt4-designer vlc python3-pip leafpad lxterminal python-picamera scratch2 python3-thonny"
+PACKAGES2="lxterminal graphicsmagick fritzing gnome-screenshot mu mono-complete dia-gnome qt4-dev-tools qtcreator python3-pyqt4 qt4-designer vlc python3-pip leafpad lxterminal python-picamera scratch2 python3-thonny ntpdate"
 SCRIPTVERSION="1.5"
 SCHOOL=LTC
 # ------------------
@@ -21,6 +21,12 @@ echo "Welcome!"
 echo "This script updates and configures the Raspberry Pi for use in Programming Classes at $SCHOOL"
 echo "Version: $SCRIPTVERSION"
 echo "Written by Ryan Cather - ryan.cather@ed.act.edu.au"
+
+# Set up the time
+
+service ntp stop
+ntpdate 203.62.5.5
+service ntp start
 
 # Update and clean system
 
@@ -52,6 +58,8 @@ pip3 install gspread
 # Configuration
 echo "Setting Wifi power management to off"
 iwconfig wlan0 power off
+
+# Configure localisation settings
 
 setxkbmap us
 
