@@ -22,12 +22,6 @@ echo "This script updates and configures the Raspberry Pi for use in Programming
 echo "Version: $SCRIPTVERSION"
 echo "Written by Ryan Cather - ryan.cather@ed.act.edu.au"
 
-# Set up the time
-
-service ntp stop
-ntpdate 203.62.5.5
-service ntp start
-
 # Update and clean system
 
 echo "Installing updates and cleaning system."
@@ -37,6 +31,14 @@ echo "Seriously - this may take some time....."
 apt-get -qq dist-upgrade -y
 apt-get -qq autoremove -y
 apt-get -qq clean
+
+
+# Set up the time
+echo "Configuring the time for SchoolsNET"
+
+service ntp stop
+ntpdate 203.62.5.5
+service ntp start
 
 echo "Installing additional packages. This may take a while...."
 
