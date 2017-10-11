@@ -10,7 +10,7 @@ blue='\e[1;34m%s\e[0m\n'
 magenta='\e[1;35m%s\e[0m\n'
 cyan='\e[1;36m%s\e[0m\n'
 
-# Examples
+# Examples for printing in colour to the console.
 #printf "$green"   "This is a test in green"
 #printf "$red"     "This is a test in red"
 #printf "$yellow"  "This is a test in yellow"
@@ -18,23 +18,18 @@ cyan='\e[1;36m%s\e[0m\n'
 #printf "$magenta" "This is a test in magenta"
 #printf "$cyan"    "This is a test in cyan"
 
-OS=""
 system=`arch`
 if [ $system = "i686" ]; then
-	echo Raspbian on PC/Mac
-	echo $system
+	printf "$magenta" "Raspbian on PC/Mac"
 else
-	echo Raspbian on Raspberry Pi
-	echo $system
+	printf "$green"   "Raspbian on Raspberry Pi"
 fi
 
 # ------------------
 # UPDATE THESE VARIABLES AS REQUIRED
 # List of packages for all architectures (including Raspbian for x86)
-PACKAGES_ALL=""
-PACKAGES_ARCH=""
-PACKAGES="pi-greeter sense-hat raspberrypi-ui-mods raspberrypi-artwork raspberrypi-bootloader pix-icons pix-plym-splash rpd-wallpaper rpi-chromium-mods python-sense-emu python3-sense-emu python-sense-emu-doc python3-pip"
-PACKAGES2="lxterminal graphicsmagick fritzing gnome-screenshot mu mono-complete dia-gnome qt4-dev-tools qtcreator python3-pyqt4 qt4-designer vlc python3-pip leafpad lxterminal python-picamera scratch2 python3-thonny ntp ntpdate libjasper1"
+PACKAGES_ALL="ntp ntpdate python3-thonny scratch2 lxterminal leafpad python3-pip vlc qt4-designer python3-pyqt4 libjasper1 qt4-dev-tools dia-gnome mono-complete mu gnome-screenshot pix-icons pix-plym-splash rpd-wallpaper rpi-chromium-mods python-sense-emu-doc python3-pip lxterminal graphicsmagick fritzing qtcreator"
+PACKAGES_RPI="pi-greeter sense-hat raspberrypi-ui-mods raspberrypi-artwork raspberrypi-bootloader python-sense-emu python3-sense-emu python-picamera"
 SCRIPTVERSION="1.9"
 SCHOOL=LTC
 # ------------------
@@ -42,14 +37,14 @@ SCHOOL=LTC
 # Script to set up the Raspberry pi for Programming
 printf "$yellow"  "Welcome! This script updates and configures the Raspberry Pi"
 printf "$yellow"  "for use in Programming Classes at $SCHOOL"
-printf "$yellow"  "Version: $SCRIPTVERSION"
-printf "$yellow"  "Written by Ryan Cather - ryan.cather@ed.act.edu.au"
+echo "Version: $SCRIPTVERSION"
+echo "Written by Ryan Cather - ryan.cather@ed.act.edu.au"
 
 # Update and clean system
 
 echo "The following packages will be installed:"
-echo "$PACKAGES"
-echo "$PACKAGES2"
+echo "$PACKAGES_ALL"
+echo "$PACKAGES_RPI"
 
 printf "$green"   "Installing updates and cleaning system."
 printf "$red"     "Do not quit - it is doing something!!"
@@ -74,16 +69,12 @@ printf "$green"   "This may take a while...."
 
 # Install packages
 
-apt-get -qq install $PACKAGES -y
-
-if [ $system = "arch" ]; then
-	apt-get -qq install $PACKAGES_ARCH -y
+if [ $system = "i686" ]; then
+	apt-get -qq install $PACKAGES_ALL -y
 else
-	echo "Nothing additional"
+	apt-get -qq install $PACKAGES_ALL -y
+	apt-get -qq install $PACKAGES_RPI -y
 fi
-
-apt-get -qq install $PACKAGES -y
-apt-get -qq install $PACKAGES2 -y
 
 # Installing additonal pip packages
 echo "Installing pip packages"
@@ -95,9 +86,14 @@ pip3 install PyOpenSSL
 pip3 install gspread
 # ------------------
 
-# Configuration
-echo "Setting Wifi power management to off"
-iwconfig wlan0 power off
+# wlan0 Configuration
+
+if [ $system = "i686" ]; then
+	echo "No Changes needed to wlan0"
+else
+	echo "Setting Wifi power management to off"
+	iwconfig wlan0 power off
+fi
 
 # Configure localisation settings
 
