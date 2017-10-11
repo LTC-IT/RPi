@@ -32,7 +32,6 @@ echo "$PACKAGES2"
 echo "Installing updates and cleaning system."
 
 printf "\033[1;31mDo not quit - it is doing something!!\033[0m\n"
-#echo "Do not quit - it is doing something!!"
 apt-get -qq update
 echo "Seriously - this may take some time....."
 apt-get -qq dist-upgrade -y
