@@ -12,20 +12,27 @@ fi
 # List of packages for all architectures (including Raspbian for x86)
 PACKAGES="pi-greeter sense-hat raspberrypi-ui-mods raspberrypi-artwork raspberrypi-bootloader pix-icons pix-plym-splash rpd-wallpaper rpi-chromium-mods python-sense-emu python3-sense-emu python-sense-emu-doc python3-pip"
 PACKAGES2="lxterminal graphicsmagick fritzing gnome-screenshot mu mono-complete dia-gnome qt4-dev-tools qtcreator python3-pyqt4 qt4-designer vlc python3-pip leafpad lxterminal python-picamera scratch2 python3-thonny ntp ntpdate libjasper1"
-SCRIPTVERSION="1.6"
+SCRIPTVERSION="1.7"
 SCHOOL=LTC
 # ------------------
 
 # Script to set up the Raspberry pi for Programming
 echo "Welcome!"
-echo "This script updates and configures the Raspberry Pi for use in Programming Classes at $SCHOOL"
+echo "This script updates and configures the Raspberry Pi 
+echo "for use in Programming Classes at $SCHOOL"
 echo "Version: $SCRIPTVERSION"
 echo "Written by Ryan Cather - ryan.cather@ed.act.edu.au"
 
 # Update and clean system
 
+echo "The following packages will be installed:"
+echo "$PACKAGES"
+echo "$PACKAGES2"
+
 echo "Installing updates and cleaning system."
-echo "Do not quit - it is doing something!!"
+
+printf "\033[1;31mDo not quit - it is doing something!!\033[0m\n"
+#echo "Do not quit - it is doing something!!"
 apt-get -qq update
 echo "Seriously - this may take some time....."
 apt-get -qq dist-upgrade -y
@@ -40,7 +47,7 @@ service ntp stop
 ntpdate 203.62.5.5
 service ntp start
 
-echo "Installing additional packages. This may take a while...."
+echo "Installing the additional packages. This may take a while...."
 
 # Install packages
 
