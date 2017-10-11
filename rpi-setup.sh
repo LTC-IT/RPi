@@ -1,4 +1,22 @@
 #!/bin/sh
+
+# Defining colours
+# from : https://unix.stackexchange.com/questions/92563/friendly-terminal-color-names-in-shell-scripts
+
+red='\e[1;31m%s\e[0m\n'
+green='\e[1;32m%s\e[0m\n'
+yellow='\e[1;33m%s\e[0m\n'
+blue='\e[1;34m%s\e[0m\n'
+magenta='\e[1;35m%s\e[0m\n'
+cyan='\e[1;36m%s\e[0m\n'
+
+printf "$green"   "This is a test in green"
+printf "$red"     "This is a test in red"
+printf "$yellow"  "This is a test in yellow"
+printf "$blue"    "This is a test in blue"
+printf "$magenta" "This is a test in magenta"
+printf "$cyan"    "This is a test in cyan"
+
 OS=""
 system=`arch`
 if [ $system = "i686" ]; then
@@ -29,11 +47,12 @@ echo "The following packages will be installed:"
 echo "$PACKAGES"
 echo "$PACKAGES2"
 
-echo "Installing updates and cleaning system."
+printf "$green"   "Installing updates and cleaning system."
+printf "$red"     "Do not quit - it is doing something!!"
 
-printf "\033[1;31mDo not quit - it is doing something!!\033[0m\n"
 apt-get -qq update
-echo "Seriously - this may take some time....."
+
+printf "$magenta" "Seriously - this may take some time....."
 apt-get -qq dist-upgrade -y
 apt-get -qq autoremove -y
 apt-get -qq clean
@@ -46,7 +65,8 @@ service ntp stop
 ntpdate 203.62.5.5
 service ntp start
 
-echo "Installing the additional packages. This may take a while...."
+echo "Installing the additional packages."
+printf "$green"   "This may take a while...."
 
 # Install packages
 
@@ -71,5 +91,5 @@ iwconfig wlan0 power off
 
 setxkbmap us
 
-echo "All done. Thank you"
-echo "Reboot now"
+printf "$blue"    "All done. Thank you"
+printf "$blue"    "Reboot now"
