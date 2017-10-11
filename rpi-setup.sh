@@ -52,13 +52,6 @@ apt-get -qq dist-upgrade -y
 apt-get -qq autoremove -y
 apt-get -qq clean
 
-# Set up the time
-echo "Configuring the time for SchoolsNET"
-
-service ntp stop
-ntpdate 203.62.5.5
-service ntp start
-
 echo "Installing the additional packages."
 printf "$green"   "This may take a while...."
 
@@ -75,6 +68,13 @@ else
 	apt-get -qq install $PACKAGES_ALL -y
 	apt-get -qq install $PACKAGES_RPI -y
 fi
+
+# Set up the time
+echo "Configuring the time for SchoolsNET"
+
+service ntp stop
+ntpdate 203.62.5.5
+service ntp start
 
 # Installing additonal pip packages
 echo "Installing pip packages"
