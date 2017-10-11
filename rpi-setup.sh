@@ -18,7 +18,7 @@ SCHOOL=LTC
 
 # Script to set up the Raspberry pi for Programming
 echo "Welcome!"
-echo "This script updates and configures the Raspberry Pi 
+echo "This script updates and configures the Raspberry Pi"
 echo "for use in Programming Classes at $SCHOOL"
 echo "Version: $SCRIPTVERSION"
 echo "Written by Ryan Cather - ryan.cather@ed.act.edu.au"
