@@ -1,5 +1,14 @@
 #!/bin/sh
 
+# ------------------
+# UPDATE THESE VARIABLES AS REQUIRED
+# List of packages for all architectures (including Raspbian for x86)
+PACKAGES_ALL="ntp ntpdate python3-thonny scratch2 lxterminal leafpad python3-pip vlc qt4-designer python3-pyqt4 libjasper1 qt4-dev-tools dia-gnome mono-complete mu gnome-screenshot pix-icons pix-plym-splash rpd-wallpaper rpi-chromium-mods python-sense-emu-doc python3-pip lxterminal graphicsmagick fritzing qtcreator"
+PACKAGES_RPI="pi-greeter sense-hat raspberrypi-ui-mods raspberrypi-artwork raspberrypi-bootloader python-sense-emu python3-sense-emu python-picamera"
+SCRIPTVERSION="2.0"
+SCHOOL=LTC
+# ------------------
+
 # Defining colours
 # from : https://unix.stackexchange.com/questions/92563/friendly-terminal-color-names-in-shell-scripts
 
@@ -25,15 +34,6 @@ else
 	printf "$green"   "Raspbian on Raspberry Pi"
 fi
 
-# ------------------
-# UPDATE THESE VARIABLES AS REQUIRED
-# List of packages for all architectures (including Raspbian for x86)
-PACKAGES_ALL="ntp ntpdate python3-thonny scratch2 lxterminal leafpad python3-pip vlc qt4-designer python3-pyqt4 libjasper1 qt4-dev-tools dia-gnome mono-complete mu gnome-screenshot pix-icons pix-plym-splash rpd-wallpaper rpi-chromium-mods python-sense-emu-doc python3-pip lxterminal graphicsmagick fritzing qtcreator"
-PACKAGES_RPI="pi-greeter sense-hat raspberrypi-ui-mods raspberrypi-artwork raspberrypi-bootloader python-sense-emu python3-sense-emu python-picamera"
-SCRIPTVERSION="1.9"
-SCHOOL=LTC
-# ------------------
-
 # Script to set up the Raspberry pi for Programming
 printf "$yellow"  "Welcome! This script updates and configures the Raspberry Pi"
 printf "$yellow"  "for use in Programming Classes at $SCHOOL"
@@ -41,10 +41,6 @@ echo "Version: $SCRIPTVERSION"
 echo "Written by Ryan Cather - ryan.cather@ed.act.edu.au"
 
 # Update and clean system
-
-echo "The following packages will be installed:"
-echo "$PACKAGES_ALL"
-echo "$PACKAGES_RPI"
 
 printf "$green"   "Installing updates and cleaning system."
 printf "$red"     "Do not quit - it is doing something!!"
@@ -55,7 +51,6 @@ printf "$magenta" "Seriously - this may take some time....."
 apt-get -qq dist-upgrade -y
 apt-get -qq autoremove -y
 apt-get -qq clean
-
 
 # Set up the time
 echo "Configuring the time for SchoolsNET"
@@ -70,8 +65,13 @@ printf "$green"   "This may take a while...."
 # Install packages
 
 if [ $system = "i686" ]; then
+	echo "The following packages will be installed:"
+	echo "$PACKAGES_ALL"
 	apt-get -qq install $PACKAGES_ALL -y
 else
+	echo "The following packages will be installed:"
+	echo "$PACKAGES_ALL"
+	echo "$PACKAGES_RPI"
 	apt-get -qq install $PACKAGES_ALL -y
 	apt-get -qq install $PACKAGES_RPI -y
 fi
