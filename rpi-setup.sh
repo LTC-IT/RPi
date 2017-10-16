@@ -86,11 +86,15 @@ pip3 install PyOpenSSL
 pip3 install gspread
 # ------------------
 
-# Turn on camera interface
+
+# wlan0 & Rpi Camera Configuration
 
 if [ $system = "i686" ]; then
+	echo "No Changes needed to wlan0"
 	echo "No Changes needed for Pi Camera"
 else
+	echo "Setting Wifi power management to off"
+	iwconfig wlan0 power off
 	grep "start_x=1" /boot/config.txt
 	if grep "start_x=1" /boot/config.txt
 	then
@@ -98,15 +102,6 @@ else
 	else
         	sed -i "s/start_x=0/start_x=1/g" /boot/config.txt
 	fi
-fi
-
-# wlan0 Configuration
-
-if [ $system = "i686" ]; then
-	echo "No Changes needed to wlan0"
-else
-	echo "Setting Wifi power management to off"
-	iwconfig wlan0 power off
 fi
 
 # Configure localisation settings
