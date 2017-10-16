@@ -30,6 +30,19 @@ cyan='\e[1;36m%s\e[0m\n'
 system=`arch`
 if [ $system = "i686" ]; then
 	printf "$magenta" "Raspbian on PC/Mac"
+	
+	# Experiment to turn on camera interface
+
+	grep "start_x=1" /boot/config.txt
+	if grep "start_x=1" /boot/config.txt
+	then
+        	printf "Pi Camera already enabled"
+	else
+        	sed -i "s/start_x=0/start_x=1/g" /boot/config.txt
+		printf "Pi Camera - ENABLED!"
+	fi
+exit
+
 else
 	printf "$green"   "Raspbian on Raspberry Pi"
 fi
@@ -103,14 +116,3 @@ printf "$blue"    "All done. Thank you"
 printf "$blue"    "Reboot now"
 
 
-# Experiment to turn on camera interface
-
-grep "start_x=1" /boot/config.txt
-if grep "start_x=1" /boot/config.txt
-then
-        exit
-else
-        sed -i "s/start_x=0/start_x=1/g" /boot/config.txt
-        reboot
-fi
-exit
