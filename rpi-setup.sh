@@ -58,11 +58,11 @@ printf "$green"   "This may take a while...."
 # Install packages
 
 if [ $system = "i686" ]; then
-	echo "The following packages will be installed:"
+	echo "The following packages will be installed/updated:"
 	echo "$PACKAGES_ALL"
 	apt-get -qq install $PACKAGES_ALL -y
 else
-	echo "The following packages will be installed:"
+	echo "The following packages will be installed/updated:"
 	echo "$PACKAGES_ALL"
 	echo "$PACKAGES_RPI"
 	apt-get -qq install $PACKAGES_ALL -y
