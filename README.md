@@ -4,4 +4,4 @@ This script is for the automatic configuring of Raspberry Pis, using Raspbian, t
 
 It updates the OS, installs different packages via apt and some python packages using pip.
 
-This has been tested under Raspbian Jessie. YMMV
+This has been tested under Raspbian Jessie and Stretch. YMMV
