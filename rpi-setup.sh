@@ -5,7 +5,7 @@
 # List of packages for all architectures (including Raspbian for x86)
 PACKAGES_ALL="ntp ntpdate python3-thonny scratch2 lxterminal leafpad python3-pip vlc qt4-designer python3-pyqt4 qt4-dev-tools dia-gnome mu gnome-screenshot pix-icons pix-plym-splash rpd-wallpaper rpi-chromium-mods python-sense-emu-doc python3-pip lxterminal graphicsmagick fritzing qtcreator qt5-default pyqt5-dev pyqt5-dev-tools"
 PACKAGES_RPI="libjasper1 pi-greeter sense-hat raspberrypi-ui-mods raspberrypi-artwork raspberrypi-bootloader python-sense-emu python3-sense-emu python-picamera"
-SCRIPTVERSION="2.1"
+SCRIPTVERSION="2.2"
 SCHOOL=LTC
 # ------------------
 
@@ -42,15 +42,14 @@ echo "Written by Ryan Cather - ryan.cather@ed.act.edu.au"
 
 # Update and clean system
 
-printf "$green"   "Installing updates and cleaning system."
+printf "$green"   "Configuring updates..."
 printf "$red"     "Do not quit - it is doing something!!"
 
 apt-get -qq update
 
 printf "$magenta" "Seriously - this may take some time....."
 apt-get -qq dist-upgrade -y
-apt-get -qq autoremove -y
-apt-get -qq clean
+
 
 echo "Installing the additional packages."
 printf "$green"   "This may take a while...."
@@ -60,14 +59,18 @@ printf "$green"   "This may take a while...."
 if [ $system = "i686" ]; then
 	echo "The following packages will be installed/updated:"
 	echo "$PACKAGES_ALL"
-	apt-get -qq install $PACKAGES_ALL -y
+	apt -qq -m install $PACKAGES_ALL -y
 else
 	echo "The following packages will be installed/updated:"
 	echo "$PACKAGES_ALL"
 	echo "$PACKAGES_RPI"
-	apt-get -qq install $PACKAGES_ALL -y
-	apt-get -qq install $PACKAGES_RPI -y
+	apt -qq -m install $PACKAGES_ALL -y
+	apt -qq -m install $PACKAGES_RPI -y
 fi
+
+echo "Cleaning System"
+apt-get -qq autoremove -y
+apt-get -qq clean
 
 # Set up the time
 echo "Configuring the time for SchoolsNET"
