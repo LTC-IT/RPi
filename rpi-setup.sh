@@ -3,7 +3,7 @@
 # ------------------
 # UPDATE THESE VARIABLES AS REQUIRED
 # List of packages for all architectures (including Raspbian for x86)
-PACKAGES_ALL="code ntp ntpdate python3-pip vlc gnome-screenshot pix-icons pix-plym-splash rpd-wallpaper rpi-chromium-mods python-sense-emu-doc lxterminal graphicsmagick fritzing qtcreator qt5-default pyqt5-dev pyqt5-dev-tools"
+PACKAGES_ALL="ntp ntpdate python3-pip vlc gnome-screenshot pix-icons pix-plym-splash rpd-wallpaper rpi-chromium-mods python-sense-emu-doc lxterminal graphicsmagick fritzing qtcreator qt5-default pyqt5-dev pyqt5-dev-tools"
 PACKAGES_RPI="libjasper1 pi-greeter sense-hat raspberrypi-ui-mods raspberrypi-artwork raspberrypi-bootloader python-sense-emu python3-sense-emu python-picamera"
 SCRIPTVERSION="2022.3"
 SCHOOL=LTC
