@@ -87,6 +87,7 @@ echo "Installing pip packages"
 pip3 install --upgrade oauth2client
 pip3 install PyOpenSSL
 pip3 install gspread
+pip3 install flask
 # ------------------
 
 
