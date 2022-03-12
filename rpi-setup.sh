@@ -28,9 +28,9 @@ cyan='\e[1;36m%s\e[0m\n'
 #printf "$cyan"    "This is a test in cyan"
 
 #system=`arch`
-if [ $system = "i686" ]; then
+if [ $system = "i686" ] then
 	printf "$magenta" "Raspbian on PC/Mac"
-else if [ $system = "aarch64" ]; then
+elif [ $system = "aarch64" ] then
 	printf "$green"   "Raspbian on Raspberry Pi 64bit"
 else
 	printf "$green"   "Raspbian on Raspberry Pi 32bit"
