@@ -27,11 +27,13 @@ cyan='\e[1;36m%s\e[0m\n'
 #printf "$magenta" "This is a test in magenta"
 #printf "$cyan"    "This is a test in cyan"
 
-system=`arch`
+#system=`arch`
 if [ $system = "i686" ]; then
 	printf "$magenta" "Raspbian on PC/Mac"
+else if [ $system = "aarch64" ]; then
+	printf "$green"   "Raspbian on Raspberry Pi 64bit"
 else
-	printf "$green"   "Raspbian on Raspberry Pi"
+	printf "$green"   "Raspbian on Raspberry Pi 32bit"
 fi
 
 # Script to set up the Raspberry pi for Programming
