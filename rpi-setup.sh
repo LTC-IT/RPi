@@ -30,7 +30,7 @@ cyan='\e[1;36m%s\e[0m\n'
 system=`arch`
 if [ $system = "i686" ]; then
 	printf "$magenta" "Raspbian on PC/Mac"
-elif [ $system = "aarch64" ] then
+elif [ $system = "aarch64" ]; then
 	printf "$green"   "Raspbian on Raspberry Pi 64bit"
 else
 	printf "$green"   "Raspbian on Raspberry Pi 32bit"
