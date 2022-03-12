@@ -4,7 +4,7 @@
 # UPDATE THESE VARIABLES AS REQUIRED
 # List of packages for all architectures (including Raspbian for x86)
 PACKAGES_ALL="ntp ntpdate python3-pip vlc gnome-screenshot rpi-chromium-mods python-sense-emu-doc lxterminal graphicsmagick fritzing"
-PACKAGES_RPI="sense-hat raspberrypi-ui-mods raspberrypi-bootloader python-sense-emu python3-sense-emu"
+PACKAGES_RPI="sense-hat raspberrypi-ui-mods raspberrypi-bootloader python3-sense-emu"
 SCRIPTVERSION="2022.3.12"
 SCHOOL=LTC
 # ------------------
