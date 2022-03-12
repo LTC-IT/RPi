@@ -3,9 +3,9 @@
 # ------------------
 # UPDATE THESE VARIABLES AS REQUIRED
 # List of packages for all architectures (including Raspbian for x86)
-PACKAGES_ALL="ntp ntpdate python3-pip vlc gnome-screenshot pix-icons pix-plym-splash rpd-wallpaper rpi-chromium-mods python-sense-emu-doc lxterminal graphicsmagick fritzing qtcreator qt5-default pyqt5-dev pyqt5-dev-tools"
-PACKAGES_RPI="libjasper1 pi-greeter sense-hat raspberrypi-ui-mods raspberrypi-artwork raspberrypi-bootloader python-sense-emu python3-sense-emu python-picamera"
-SCRIPTVERSION="2022.3.11"
+PACKAGES_ALL="ntp ntpdate python3-pip vlc gnome-screenshot rpi-chromium-mods python-sense-emu-doc lxterminal graphicsmagick fritzing"
+PACKAGES_RPI="sense-hat raspberrypi-ui-mods raspberrypi-bootloader python-sense-emu python3-sense-emu"
+SCRIPTVERSION="2022.3.12"
 SCHOOL=LTC
 # ------------------
 
@@ -40,12 +40,7 @@ printf "$yellow"  "for use in Programming Classes at $SCHOOL"
 echo "Version: $SCRIPTVERSION"
 echo "Written by Ryan Cather - ryan.cather@ed.act.edu.au"
 
-# Set up the time
-echo "Configuring the time for SchoolsNET"
 
-service ntp stop
-ntpdate 203.62.5.5
-service ntp start
 
 # Update and clean system
 
@@ -79,6 +74,13 @@ echo "Cleaning System"
 apt-get -qq autoremove -y
 apt-get -qq clean
 
+# Set up the time
+echo "Configuring the time for SchoolsNET. Disable if unnecessary."
+
+# put a # in front of the lins below if you're using this outside the school network.
+service ntp stop
+ntpdate 203.62.5.5
+service ntp start
 
 # Installing additonal pip packages
 echo "Installing pip packages"
