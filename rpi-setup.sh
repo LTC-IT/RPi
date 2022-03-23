@@ -5,7 +5,7 @@
 # List of packages for all architectures (including Raspbian for x86)
 PACKAGES_ALL="ntp ntpdate python3-pip vlc gnome-screenshot rpi-chromium-mods python-sense-emu-doc lxterminal graphicsmagick fritzing sqlite3"
 PACKAGES_RPI="sense-hat raspberrypi-ui-mods raspberrypi-bootloader python3-sense-emu"
-SCRIPTVERSION="2022.3.12"
+SCRIPTVERSION="2022.3.24"
 SCHOOL=LTC
 # ------------------
 
@@ -43,6 +43,7 @@ echo "Version: $SCRIPTVERSION"
 echo "Written by Ryan Cather - ryan.cather@ed.act.edu.au"
 
 
+bash ./wirelessConfig.sh
 
 # Update and clean system
 
@@ -75,14 +76,6 @@ fi
 echo "Cleaning System"
 apt-get -qq autoremove -y
 apt-get -qq clean
-
-# Set up the time
-echo "Configuring the time for SchoolsNET. Disable if unnecessary."
-
-# put a # in front of the lins below if you're using this outside the school network.
-service ntp stop
-ntpdate 203.62.5.5
-service ntp start
 
 # Installing additonal pip packages
 echo "Installing pip packages"
