@@ -76,6 +76,6 @@ ip=$(ip addr show dev wlan0 | grep inet | head -1 | awk '{print $2}')
 echo "Got IP address $ip"
 bash ./setup_ntp.sh
 
-echo "Device setup to connect to ssid EDU on boot"
-read -n 1 -s -p "Press any key to reboot..."
-shutdown -r now
+#echo "Device setup to connect to ssid EDU on boot"
+#read -n 1 -s -p "Press any key to reboot..."
+#shutdown -r now
