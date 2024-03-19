@@ -3,9 +3,9 @@
 # ------------------
 # UPDATE THESE VARIABLES AS REQUIRED
 # List of packages for all architectures (including Raspbian for x86)
-PACKAGES_ALL="ntp ntpdate python3-pip vlc gnome-screenshot rpi-chromium-mods python-sense-emu-doc lxterminal graphicsmagick fritzing sqlite3"
-PACKAGES_RPI="sense-hat raspberrypi-ui-mods raspberrypi-bootloader python3-sense-emu"
-SCRIPTVERSION="2022.3.24"
+PACKAGES_ALL="ntp ntpdate python3-pip gnome-screenshot php "
+PACKAGES_RPI="sqlite3 php-sqlite3 code"
+SCRIPTVERSION="2024.3.19"
 SCHOOL=LTC
 # ------------------
 
@@ -27,6 +27,8 @@ cyan='\e[1;36m%s\e[0m\n'
 #printf "$magenta" "This is a test in magenta"
 #printf "$cyan"    "This is a test in cyan"
 
+bash ./setup_ntp.sh
+
 system=`arch`
 if [ $system = "i686" ]; then
 	printf "$magenta" "Raspbian on PC/Mac"
@@ -43,7 +45,7 @@ echo "Version: $SCRIPTVERSION"
 echo "Written by Ryan Cather - ryan.cather@ed.act.edu.au"
 
 
-bash ./wirelessConfig.sh
+# bash ./wirelessConfig.sh
 
 # Update and clean system
 
@@ -82,10 +84,10 @@ echo "Installing pip packages"
 
 # ------------------
 # UPDATE THESE PACKAGES AS REQUIRED
-pip3 install --upgrade oauth2client
-pip3 install PyOpenSSL
-pip3 install gspread
-pip3 install flask
+# pip3 install --upgrade oauth2client
+# pip3 install PyOpenSSL
+# pip3 install gspread
+# pip3 install flask
 # ------------------
 
 
