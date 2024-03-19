@@ -27,7 +27,7 @@ cyan='\e[1;36m%s\e[0m\n'
 #printf "$magenta" "This is a test in magenta"
 #printf "$cyan"    "This is a test in cyan"
 
-bash ./setup_ntp.sh
+
 
 system=`arch`
 if [ $system = "i686" ]; then
@@ -79,6 +79,9 @@ echo "Cleaning System"
 apt-get -qq autoremove -y
 apt-get -qq clean
 
+echo "Configuring the Time Server"
+bash ./setup_ntp.sh
+
 # Installing additonal pip packages
 echo "Installing pip packages"
 
@@ -89,6 +92,10 @@ echo "Installing pip packages"
 # pip3 install gspread
 # pip3 install flask
 # ------------------
+
+# Creating VSCode link
+
+echo "sudo code --user-data-dir /home/pi/.vscode-root --no-sandbox" > ~/Desktop/VSCode.desktop 
 
 
 # wlan0 & Rpi Camera Configuration
