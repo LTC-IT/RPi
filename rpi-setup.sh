@@ -96,7 +96,7 @@ echo "Installing pip packages"
 # Creating VSCode link
 
 echo "sudo code --user-data-dir /home/pi/.vscode-root --no-sandbox" > /home/pi/Desktop/VSCode.sh 
-
+chmod +x /home/pi/Desktop/VSCode.sh
 
 # wlan0 & Rpi Camera Configuration
 
